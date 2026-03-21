@@ -1,11 +1,7 @@
-import "./App.css";
+import RootRouter from "./RootRouter";
 
 function App() {
-  return (
-    <>
-      <div className="text-7xl font-bold underline">boxmap</div>
-    </>
-  );
+  return <RootRouter />;
 }
 
 export default App;
