@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
-import { Input } from "../ui/input";
 import {
   Sidebar,
   SidebarContent,

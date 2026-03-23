@@ -3,10 +3,10 @@ import AppSidebar from "./AppSidebar";
 
 export default function Sidebar() {
   return (
-    <SidebarProvider className="w-fit">
+    <SidebarProvider className="relative w-fit">
       <AppSidebar />
       <div>
-        <SidebarTrigger />
+        <SidebarTrigger className="fixed" />
       </div>
     </SidebarProvider>
   );
