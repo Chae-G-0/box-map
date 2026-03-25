@@ -253,3 +253,9 @@ export const REGION_CITY = [
     ],
   },
 ];
+
+export const QUERY_KEY = {
+  box: {
+    list: ["box", "list"],
+  },
+};

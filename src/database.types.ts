@@ -17,9 +17,11 @@ export type Database = {
       box: {
         Row: {
           address: string
-          babelDrop: boolean
+          barbell_drop: boolean
           city: string | null
+          city_id: string
           etc: string | null
+          id: string
           instagram: string | null
           lat: number
           lng: number
@@ -27,14 +29,17 @@ export type Database = {
           parking: boolean
           platform: boolean
           region: string
+          region_id: string
           shower: boolean
           website: string | null
         }
         Insert: {
           address: string
-          babelDrop: boolean
+          barbell_drop: boolean
           city?: string | null
+          city_id: string
           etc?: string | null
+          id?: string
           instagram?: string | null
           lat: number
           lng: number
@@ -42,14 +47,17 @@ export type Database = {
           parking: boolean
           platform: boolean
           region: string
+          region_id: string
           shower: boolean
           website?: string | null
         }
         Update: {
           address?: string
-          babelDrop?: boolean
+          barbell_drop?: boolean
           city?: string | null
+          city_id?: string
           etc?: string | null
+          id?: string
           instagram?: string | null
           lat?: number
           lng?: number
@@ -57,6 +65,7 @@ export type Database = {
           parking?: boolean
           platform?: boolean
           region?: string
+          region_id?: string
           shower?: boolean
           website?: string | null
         }
