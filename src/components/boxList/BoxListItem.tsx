@@ -1,6 +1,10 @@
+import { useSetCenter } from "@/store/useBoxStore";
+import type { BoxEtity } from "@/types";
 import { Link } from "react-router-dom";
 
-export default function BoxListItem({ ...boxData }) {
+export default function BoxListItem({ ...boxData }: BoxEtity) {
+  const setBoxState = useSetCenter();
+
   const labelStyle = `rounded-full border px-3 py-1 w-fit`;
 
   return (
@@ -8,7 +12,7 @@ export default function BoxListItem({ ...boxData }) {
       <div className="mb-2">
         <p
           className="inline-block cursor-pointer text-[16px] font-bold"
-          onClick={() => {}}
+          onClick={() => setBoxState({ lat: boxData.lat, lng: boxData.lng })}
         >
           {boxData.name}
         </p>
