@@ -57,7 +57,9 @@ export default function AppSidebar() {
                         >
                           <SidebarMenuSubButton
                             onClick={() =>
-                              navigate(`/map/${region.id}/${city.id}`)
+                              navigate(
+                                `/map?region=${region.id}&city=${city.id}`,
+                              )
                             }
                           >
                             {city.label}
