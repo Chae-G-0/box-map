@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Map } from "react-kakao-maps-sdk";
 import {
   useSetCenter,
@@ -11,9 +11,12 @@ import BoxMarker from "./BoxMarker";
 import BoxList from "../boxList/BoxList";
 
 export default function BoxMap() {
-  const { region, city } = useParams();
   const mapRef = useRef<kakao.maps.Map>(null);
-  const isInitialSet = useRef(false);
+
+  const [searchParams] = useSearchParams();
+  const searchKeyword = searchParams.get("q") || "";
+  const region = searchParams.get("region") || "";
+  const city = searchParams.get("city") || "";
   const {
     data,
     error,
@@ -21,7 +24,8 @@ export default function BoxMap() {
     isPending: isBoxDataPending,
     fetchNextPage,
     isFetchingNextPage,
-  } = useInfiniteBoxesData(region!, city!);
+  } = useInfiniteBoxesData(region, city, searchKeyword);
+
   const { center } = useSelectedBoxState();
   const setCenter = useSetCenter();
   const centerReset = useCenterReset();
@@ -32,16 +36,14 @@ export default function BoxMap() {
 
   useEffect(() => {
     centerReset();
-  }, [region]);
+  }, [region, searchKeyword]);
 
   useEffect(() => {
-    if (isFetched && flatBoxData.length > 0 && !isInitialSet.current) {
+    if (isFetched && flatBoxData.length > 0) {
       setCenter({
         lat: flatBoxData[0]?.lat,
         lng: flatBoxData[0]?.lng,
       });
-
-      isInitialSet.current = true;
     }
   }, [isFetched]);
 
@@ -50,14 +52,7 @@ export default function BoxMap() {
   if (!center) return null;
 
   return (
-    <div className="flex items-center justify-center">
-      <BoxList
-        region={korRegion ?? ""}
-        city={korCity ?? ""}
-        data={data?.pages}
-        fetchNextPage={fetchNextPage}
-        isFetchingNextPage={isFetchingNextPage}
-      />
+    <div className="flex w-full items-center justify-center">
       <Map
         ref={mapRef}
         center={{ lat: center?.lat, lng: center?.lng }}
@@ -78,6 +73,14 @@ export default function BoxMap() {
           }),
         )}
       </Map>
+      <BoxList
+        region={korRegion ?? ""}
+        city={korCity ?? ""}
+        searchKeyword={searchKeyword}
+        data={data?.pages}
+        fetchNextPage={fetchNextPage}
+        isFetchingNextPage={isFetchingNextPage}
+      />
     </div>
   );
 }

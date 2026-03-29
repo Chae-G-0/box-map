@@ -7,6 +7,7 @@ import type { UseInfiniteQueryResult } from "@tanstack/react-query";
 type Props = {
   region: string;
   city: string;
+  searchKeyword: string;
   data: BoxEtity[][];
   fetchNextPage: UseInfiniteQueryResult<any, any>["fetchNextPage"];
   isFetchingNextPage: boolean;
@@ -15,6 +16,7 @@ type Props = {
 export default function BoxList({
   region,
   city,
+  searchKeyword,
   data,
   fetchNextPage,
   isFetchingNextPage,
@@ -31,7 +33,7 @@ export default function BoxList({
     <div className="no-scrollbar h-screen w-100 overflow-y-scroll">
       <div className="flex justify-between border-b px-4 py-2 text-[14px]">
         <p>
-          {region} {city}
+          {searchKeyword ? `${searchKeyword} 검색결과` : `${region} ${city}`}
         </p>
       </div>
       <div>

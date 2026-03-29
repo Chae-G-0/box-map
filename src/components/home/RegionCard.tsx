@@ -11,7 +11,7 @@ export default function RegionCard() {
     <div className={`${!isPc && `flex-col`} flex gap-5`}>
       <div
         className="relative cursor-pointer"
-        onClick={() => navigate("/map/busan/busanHaeundae")}
+        onClick={() => navigate("/map?region=busan&city=busanHaeundae")}
       >
         <div className="absolute top-6 left-6">
           <p
@@ -32,7 +32,7 @@ export default function RegionCard() {
       </div>
       <div
         className="relative cursor-pointer"
-        onClick={() => navigate("/map/jejudo/jeju")}
+        onClick={() => navigate("/map?region=jejudo&city=jeju")}
       >
         <div className="absolute top-6 left-6">
           <p
