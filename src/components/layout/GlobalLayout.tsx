@@ -12,7 +12,7 @@ export default function GlobalLayout() {
   return (
     <div className="relative min-h-screen min-w-screen">
       <div
-        className={`${isPc ? `w-200` : `w-100`} absolute left-[50%] z-998 flex h-20 translate-x-[-50%] items-center justify-between`}
+        className={`${isPc ? `w-200` : `w-full p-4`} absolute left-[50%] z-998 flex h-20 translate-x-[-50%] items-center justify-between`}
       >
         <div
           onClick={() => navigate("/")}
@@ -20,7 +20,7 @@ export default function GlobalLayout() {
         >
           BOXMAP
         </div>
-        <div className={`${isPc ? `w-105` : `min-w-70`}`}>
+        <div className={`${isPc ? `w-105` : `min-w-60`}`}>
           <SearchInput />
         </div>
         <MenuIcon
