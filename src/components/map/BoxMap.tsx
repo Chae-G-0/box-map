@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
+import useResponsive from "@/hooks/useResponsive";
 import { Map } from "react-kakao-maps-sdk";
 import {
   useSetCenter,
@@ -9,8 +10,10 @@ import {
 import useInfiniteBoxesData from "@/hooks/queries/useInfiniteBoxesData";
 import BoxMarker from "./BoxMarker";
 import BoxList from "../boxList/BoxList";
+import BottomSheetContainer from "../bottomSheet/BottomSheetContainer";
 
 export default function BoxMap() {
+  const { isPc } = useResponsive();
   const mapRef = useRef<kakao.maps.Map>(null);
 
   const [searchParams] = useSearchParams();
@@ -52,11 +55,13 @@ export default function BoxMap() {
   if (!center) return null;
 
   return (
-    <div className="flex w-full items-center justify-center">
+    <div
+      className={`${isPc && `flex`} relative h-screen w-screen items-center justify-center`}
+    >
       <Map
         ref={mapRef}
         center={{ lat: center?.lat, lng: center?.lng }}
-        style={{ width: "100%", height: "100vh" }}
+        style={{ width: "100%", height: "100%" }}
         level={3}
         isPanto
       >
@@ -73,14 +78,27 @@ export default function BoxMap() {
           }),
         )}
       </Map>
-      <BoxList
-        region={korRegion ?? ""}
-        city={korCity ?? ""}
-        searchKeyword={searchKeyword}
-        data={data?.pages}
-        fetchNextPage={fetchNextPage}
-        isFetchingNextPage={isFetchingNextPage}
-      />
+      {isPc ? (
+        <BoxList
+          region={korRegion ?? ""}
+          city={korCity ?? ""}
+          searchKeyword={searchKeyword}
+          data={data?.pages}
+          fetchNextPage={fetchNextPage}
+          isFetchingNextPage={isFetchingNextPage}
+        />
+      ) : (
+        <BottomSheetContainer>
+          <BoxList
+            region={korRegion ?? ""}
+            city={korCity ?? ""}
+            searchKeyword={searchKeyword}
+            data={data?.pages}
+            fetchNextPage={fetchNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+          />
+        </BottomSheetContainer>
+      )}
     </div>
   );
 }
