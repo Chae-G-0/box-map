@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useResponsive from "@/hooks/useResponsive";
-import { useModal } from "@/store/useModal";
+import { useModal } from "@/store/useModalStore";
 import { REGION_CITY } from "@/lib/constants";
 import {
   Dialog,

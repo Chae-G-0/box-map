@@ -46,7 +46,7 @@ export default function BoxList({
             return <BoxListItem key={box?.id} {...box} />;
           }),
         )}
-        {isFetchingNextPage && <div>로딩중</div>}
+        {isFetchingNextPage && <div className="text-center">로딩중</div>}
         <div ref={ref}></div>
       </div>
     </div>
