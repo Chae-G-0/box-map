@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import useResponsive from "@/hooks/useResponsive";
-import { useOpenModal } from "@/store/useModal";
+import { useOpenModal } from "@/store/useModalStore";
 import SearchInput from "../home/SearchInput";
 import { MenuIcon } from "lucide-react";
 

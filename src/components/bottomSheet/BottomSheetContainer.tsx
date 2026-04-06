@@ -1,16 +1,21 @@
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { motion } from "motion/react";
+import { useBottomSheet } from "@/store/useBottomSheetStore";
 
 export default function BottomSheetContainer({
   children,
 }: {
   children: ReactNode;
 }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const { isBottomSheetOpen, openBottomSheet, closeBottomSheet } =
+    useBottomSheet();
+
   return (
     <motion.div
       drag="y"
-      animate={isOpen ? { top: `20dvh` } : { top: `calc(100dvh - 40px)` }} // 열리고 닫혔을때 바텀시트의 높이 설정
+      animate={
+        isBottomSheetOpen ? { top: `20dvh` } : { top: `calc(100dvh - 40px)` }
+      } // 열리고 닫혔을때 바텀시트의 높이 설정
       dragConstraints={{ top: 0, bottom: 0 }} // 드래그했을때 바텀시트가 통째로 날아가지 않게 움직임 제한
       transition={{ type: "spring", bounce: 0 }} // 애니메이션 움직임 속성
       onDragEnd={(_, info) => {
@@ -20,11 +25,11 @@ export default function BottomSheetContainer({
 
         if (dragOffsetY < -THRESHOLD) {
           // 음수 = 위로 THRESHOLD보다 드래그 = bottomsheet 열림
-          setIsOpen(true);
+          openBottomSheet();
         }
         if (dragOffsetY > THRESHOLD) {
           // 양수 = 아래로 THRESHOLD보다 드래그 = bottomsheet 닫힘
-          setIsOpen(false);
+          closeBottomSheet();
         }
       }}
       className={`fixed top-0 right-0 left-0 z-999 h-dvh w-full touch-none rounded-t-lg bg-white shadow-[0_-2px_8px_rgba(0,0,0,0.15)] will-change-transform`}

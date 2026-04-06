@@ -51,7 +51,12 @@ export default function BoxMap() {
   }, [isFetched]);
 
   if (error) return <div>에러가 발생했습니다.</div>;
-  if (isBoxDataPending) return <div>로딩중</div>;
+  if (isBoxDataPending)
+    return (
+      <div className="flex h-screen w-screen items-center justify-center">
+        로딩중
+      </div>
+    );
   if (!center) return null;
 
   return (
