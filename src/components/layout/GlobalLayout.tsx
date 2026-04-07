@@ -24,7 +24,7 @@ export default function GlobalLayout() {
           <SearchInput />
         </div>
         <MenuIcon
-          className="bg-muted h-7 w-7 cursor-pointer rounded-sm p-1.5"
+          className="bg-muted h-6 w-6 cursor-pointer rounded-sm p-1"
           onClick={openModal}
         />
       </div>
