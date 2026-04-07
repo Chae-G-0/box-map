@@ -33,7 +33,7 @@ export default function BoxList({
 
   return (
     <div
-      className={`${isPc ? `h-screen w-100` : `h-[calc(80dvh-40px)] w-full`} no-scrollbar overflow-y-auto overscroll-contain bg-white`}
+      className={`${isPc ? `h-screen w-100` : `h-[calc(80dvh-40px)] w-full`} no-scrollbar overflow-y-auto overscroll-contain bg-white [-webkit-overflow-scrolling:touch]`}
     >
       <div className="flex justify-between border-b px-4 py-2 text-[14px]">
         <p>
@@ -47,7 +47,7 @@ export default function BoxList({
           }),
         )}
         {isFetchingNextPage && <div className="text-center">로딩중</div>}
-        <div ref={ref}></div>
+        <div ref={ref} className="p-0.5"></div>
       </div>
     </div>
   );
