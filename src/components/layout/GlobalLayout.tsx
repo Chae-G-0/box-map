@@ -2,7 +2,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 import useResponsive from "@/hooks/useResponsive";
 import { useOpenModal } from "@/store/useModalStore";
 import SearchInput from "../home/SearchInput";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, User } from "lucide-react";
+import boxmapIcon from "@/assets/boxmapIcon.png";
 
 export default function GlobalLayout() {
   const { isPc } = useResponsive();
@@ -12,21 +13,29 @@ export default function GlobalLayout() {
   return (
     <div className="relative min-h-screen min-w-screen">
       <div
-        className={`${isPc ? `w-200` : `w-full p-4`} absolute left-[50%] z-998 flex h-20 translate-x-[-50%] items-center justify-between`}
+        className={`${isPc ? `w-200 p-6` : `w-full p-4`} absolute top-0 left-[50%] z-998 translate-x-[-50%]`}
       >
         <div
-          onClick={() => navigate("/")}
-          className="bg-muted cursor-pointer rounded-sm p-1"
+          className={`${isPc ? `gap-4` : `gap-2`} flex items-center justify-between`}
         >
-          BOXMAP
+          <div
+            onClick={() => navigate("/")}
+            className="bg-muted cursor-pointer"
+          >
+            <img src={boxmapIcon} alt="boxmap icon" className="h-6 w-6" />
+          </div>
+          <div className={`flex-1`}>
+            <SearchInput />
+          </div>
+          <MenuIcon
+            className="bg-muted h-6 w-6 cursor-pointer rounded-sm p-1"
+            onClick={openModal}
+          />
+          <User
+            className="bg-muted h-6 w-6 cursor-pointer rounded-sm p-1"
+            onClick={() => navigate("sign-in")}
+          />
         </div>
-        <div className={`${isPc ? `w-105` : `min-w-60`}`}>
-          <SearchInput />
-        </div>
-        <MenuIcon
-          className="bg-muted h-6 w-6 cursor-pointer rounded-sm p-1"
-          onClick={openModal}
-        />
       </div>
       <Outlet />
     </div>
