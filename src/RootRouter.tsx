@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/home";
 import BoxMap from "./components/map/BoxMap";
 import GlobalLayout from "./components/layout/GlobalLayout";
+import SignIn from "./components/auth/SignIn";
 
 export default function RootRouter() {
   return (
@@ -11,6 +12,7 @@ export default function RootRouter() {
         <Route path="/" element={<Home />} />
         <Route path="/map" element={<BoxMap />} />
       </Route>
+      <Route path="/sign-in" element={<SignIn />} />
     </Routes>
   );
 }
