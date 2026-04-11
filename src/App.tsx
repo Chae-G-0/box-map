@@ -1,11 +1,14 @@
-import ModalProvider from "./components/modal/ModalProvider";
 import RootRouter from "./RootRouter";
+import ModalProvider from "./components/modal/ModalProvider";
+import SessionProvider from "./components/provider/SessionProvider";
 
 function App() {
   return (
-    <ModalProvider>
-      <RootRouter />
-    </ModalProvider>
+    <SessionProvider>
+      <ModalProvider>
+        <RootRouter />
+      </ModalProvider>
+    </SessionProvider>
   );
 }
 

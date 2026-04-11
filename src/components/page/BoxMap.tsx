@@ -8,9 +8,10 @@ import {
   useCenterReset,
 } from "@/store/useBoxStore";
 import useInfiniteBoxesData from "@/hooks/queries/useInfiniteBoxesData";
-import BoxMarker from "./BoxMarker";
-import BoxList from "../boxList/BoxList";
+import BoxMarker from "../map/BoxMarker";
+import BoxList from "../map/BoxList";
 import BottomSheetContainer from "../bottomSheet/BottomSheetContainer";
+import GlobalLoader from "../GlobalLoader";
 
 export default function BoxMap() {
   const { isPc } = useResponsive();
@@ -51,12 +52,7 @@ export default function BoxMap() {
   }, [isFetched]);
 
   if (error) return <div>에러가 발생했습니다.</div>;
-  if (isBoxDataPending)
-    return (
-      <div className="flex h-screen w-screen items-center justify-center">
-        로딩중
-      </div>
-    );
+  if (isBoxDataPending) return <GlobalLoader />;
   if (!center) return null;
 
   return (

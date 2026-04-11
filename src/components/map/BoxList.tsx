@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import type { UseInfiniteQueryResult } from "@tanstack/react-query";
 import useResponsive from "@/hooks/useResponsive";
 import BoxListItem from "./BoxListItem";
 import type { BoxEtity } from "@/types";
-import type { UseInfiniteQueryResult } from "@tanstack/react-query";
 
 type Props = {
   region: string;
