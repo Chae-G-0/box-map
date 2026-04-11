@@ -1,5 +1,5 @@
 import useResponsive from "@/hooks/useResponsive";
-import RegionCard from "./RegionCard";
+import RegionCard from "../home/RegionCard";
 
 export default function Home() {
   const { isPc } = useResponsive();

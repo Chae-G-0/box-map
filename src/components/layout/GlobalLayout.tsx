@@ -4,8 +4,10 @@ import { useOpenModal } from "@/store/useModalStore";
 import SearchInput from "../home/SearchInput";
 import { MenuIcon, User } from "lucide-react";
 import boxmapIcon from "@/assets/boxmapIcon.png";
+import { useSession } from "@/store/useSession";
 
 export default function GlobalLayout() {
+  const session = useSession();
   const { isPc } = useResponsive();
   const navigate = useNavigate();
   const openModal = useOpenModal();
@@ -33,7 +35,7 @@ export default function GlobalLayout() {
           />
           <User
             className="bg-muted h-6 w-6 cursor-pointer rounded-sm p-1"
-            onClick={() => navigate("sign-in")}
+            onClick={() => navigate(session ? `my-page` : `sign-in`)}
           />
         </div>
       </div>
