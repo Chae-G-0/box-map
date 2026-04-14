@@ -14,6 +14,35 @@ export type Database = {
   }
   public: {
     Tables: {
+      bookmark: {
+        Row: {
+          box_id: string
+          created_at: string
+          id: number
+          user_id: string
+        }
+        Insert: {
+          box_id?: string
+          created_at?: string
+          id?: number
+          user_id?: string
+        }
+        Update: {
+          box_id?: string
+          created_at?: string
+          id?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookmark_box_id_fkey"
+            columns: ["box_id"]
+            isOneToOne: false
+            referencedRelation: "box"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       box: {
         Row: {
           address: string
@@ -76,7 +105,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      toggle_box_bookmark: {
+        Args: { p_box_id: string; p_user_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
