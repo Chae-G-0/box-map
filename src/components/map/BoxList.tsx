@@ -3,13 +3,13 @@ import { useInView } from "react-intersection-observer";
 import type { UseInfiniteQueryResult } from "@tanstack/react-query";
 import useResponsive from "@/hooks/useResponsive";
 import BoxListItem from "./BoxListItem";
-import type { BoxEtity } from "@/types";
+import type { Box } from "@/types";
 
 type Props = {
   region: string;
   city: string;
   searchKeyword: string;
-  data: BoxEtity[][];
+  data: Box[][];
   fetchNextPage: UseInfiniteQueryResult<any, any>["fetchNextPage"];
   isFetchingNextPage: boolean;
 };

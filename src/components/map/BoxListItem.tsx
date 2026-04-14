@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import { useCloseBottomSheet } from "@/store/useBottomSheetStore";
 import { useSetCenter } from "@/store/useBoxStore";
-import type { BoxEtity } from "@/types";
-import { Link } from "react-router-dom";
+import BookmarkButton from "../bookmark/BookmarkButton";
+import type { Box } from "@/types";
 
-export default function BoxListItem({ ...boxData }: BoxEtity) {
+export default function BoxListItem({ ...boxData }: Box) {
   const setBoxState = useSetCenter();
   const closeBottomSheet = useCloseBottomSheet();
 
@@ -11,17 +12,20 @@ export default function BoxListItem({ ...boxData }: BoxEtity) {
 
   return (
     <div className="border-b p-4">
-      <div className="mb-2">
-        <p
-          className="inline-block cursor-pointer text-[16px] font-bold"
-          onClick={() => {
-            setBoxState({ lat: boxData.lat, lng: boxData.lng });
-            closeBottomSheet();
-          }}
-        >
-          {boxData.name}
-        </p>
-        <p className="text-[10px] break-keep">{boxData.address}</p>
+      <div className="mb-2 flex justify-between">
+        <div>
+          <p
+            className="inline-block cursor-pointer text-[16px] font-bold"
+            onClick={() => {
+              setBoxState({ lat: boxData.lat, lng: boxData.lng });
+              closeBottomSheet();
+            }}
+          >
+            {boxData.name}
+          </p>
+          <p className="text-[10px] break-keep">{boxData.address}</p>
+        </div>
+        <BookmarkButton id={boxData.id} isBookmark={boxData.isBookmark} />
       </div>
       <div className="flex flex-wrap gap-1 text-[12px]">
         <p className={labelStyle}>주차 {boxData.parking ? `가능` : `불가`}</p>
