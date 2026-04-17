@@ -3,7 +3,7 @@ import useResponsive from "@/hooks/useResponsive";
 import { useSession } from "@/store/useSession";
 import { signOut } from "@/api/auth";
 import { Button } from "../ui/button";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function MyPage() {
   const session = useSession();
@@ -11,7 +11,7 @@ export default function MyPage() {
   const { isMobile } = useResponsive();
 
   return (
-    <div className="h-screen w-screen p-6">
+    <div className="flex h-screen flex-col p-6">
       <div
         className="mb-8 flex cursor-pointer items-center"
         onClick={() => navigate("/")}
@@ -19,8 +19,17 @@ export default function MyPage() {
         <ChevronLeft className="text-gray-500" />
         <p className="text-[14px] text-gray-500">홈으로</p>
       </div>
-      <div className="mb-2 text-[20px] font-bold">마이페이지</div>
-      <div className="mb-2">{session?.user.email}</div>
+      <div className="m-auto h-full w-full max-w-175">
+        <div className="text-[20px] font-bold">마이페이지</div>
+        <div className="mb-4">{session?.user.email}</div>
+        <div
+          className="mb-2 flex cursor-pointer items-center justify-between"
+          onClick={() => navigate("/my-page/bookmark")}
+        >
+          <div>북마크</div>
+          <ChevronRight className="text-gray-500" />
+        </div>
+      </div>
       <div className="flex flex-col items-center justify-end">
         <Button
           variant="outline"

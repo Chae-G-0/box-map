@@ -18,7 +18,7 @@ export default function GlobalLayout() {
         className={`${isPc ? `w-200 p-6` : `w-full p-4`} absolute top-0 left-[50%] z-998 translate-x-[-50%]`}
       >
         <div
-          className={`${isPc ? `gap-4` : `gap-2`} flex items-center justify-between`}
+          className={`${isPc ? `gap-4` : `gap-2`} m-auto flex max-w-175 items-center justify-between`}
         >
           <div
             onClick={() => navigate("/")}
