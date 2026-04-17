@@ -6,7 +6,7 @@ import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@base-ui/react";
 
-export default function SignIn() {
+export default function SignInPage() {
   const { isMobile } = useResponsive();
   const { mutate: signInWithOauth, isPending: isSignInPending } =
     useSignInWithOauth();

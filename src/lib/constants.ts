@@ -259,4 +259,7 @@ export const QUERY_KEY = {
     list: ["box", "list"],
     byId: (boxId: string) => ["box", "list", boxId],
   },
+  bookmark: {
+    list: ["bookmark", "list"],
+  },
 };

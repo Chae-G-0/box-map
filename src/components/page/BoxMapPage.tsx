@@ -13,7 +13,7 @@ import BoxList from "../map/BoxList";
 import BottomSheetContainer from "../bottomSheet/BottomSheetContainer";
 import GlobalLoader from "../GlobalLoader";
 
-export default function BoxMap() {
+export default function BoxMapPage() {
   const { isPc } = useResponsive();
   const mapRef = useRef<kakao.maps.Map>(null);
 

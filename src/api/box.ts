@@ -71,3 +71,16 @@ export async function toggleBoxBookmark({
   if (error) throw error;
   return data;
 }
+
+export async function fetchBookmarkedBoxes({ userId }: { userId: string }) {
+  const { data, error } = await supabase
+    .from("bookmark")
+    .select("box_id, box (*)")
+    .eq("user_id", userId);
+
+  if (error) throw error;
+  return data.map((bookmark) => ({
+    ...bookmark.box,
+    isBookmark: true,
+  }));
+}
