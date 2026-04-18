@@ -17,3 +17,11 @@ export async function signOut() {
     });
   }
 }
+
+export async function deleteAccount(userId: string) {
+  const { error } = await supabase.functions.invoke("delete-account", {
+    body: { userId },
+  });
+
+  if (error) throw error;
+}
