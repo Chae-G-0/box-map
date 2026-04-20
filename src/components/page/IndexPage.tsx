@@ -9,7 +9,7 @@ export default function Home() {
         크로스핏도 여행의 일부인 핏터들을 위한
       </p>
       <p className={`${isPc ? `text-[36px]` : `text-[26px]`} mb-2 font-bold`}>
-        전국 크로스핏 BOX MAP
+        전국 824개 크로스핏 BOX MAP
       </p>
       <RegionCard />
     </div>
