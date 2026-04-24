@@ -51,6 +51,12 @@ export default function BoxMapPage() {
     }
   }, [isFetched]);
 
+  if (data?.pages?.[0].length === 0)
+    return (
+      <div className="m-auto flex h-screen w-screen items-center justify-center text-gray-500">
+        검색 결과가 존재하지 않습니다.
+      </div>
+    );
   if (error) return <div>에러가 발생했습니다.</div>;
   if (isBoxDataPending) return <GlobalLoader />;
   if (!center) return null;

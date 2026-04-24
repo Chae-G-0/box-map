@@ -28,7 +28,7 @@ export async function fetchBoxes({
         `name.ilike.%${searchKeyword}%,region.ilike.%${searchKeyword}%,city.ilike.%${searchKeyword}%`,
       );
     }
-    query = query.range(from, to);
+    query = query.range(from, to).order("name", { ascending: true });
 
     const { data, error } = await query;
     if (error) throw error;
@@ -47,7 +47,7 @@ export async function fetchBoxes({
         `name.ilike.%${searchKeyword}%,region.ilike.%${searchKeyword}%,city.ilike.%${searchKeyword}%`,
       );
     }
-    query = query.range(from, to);
+    query = query.range(from, to).order("name", { ascending: true });
 
     const { data, error } = await query;
     if (error) throw error;
