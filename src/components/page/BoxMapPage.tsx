@@ -69,7 +69,7 @@ export default function BoxMapPage() {
         ref={mapRef}
         center={{ lat: center?.lat, lng: center?.lng }}
         style={{ width: "100%", height: "100%" }}
-        level={3}
+        level={1}
         isPanto
       >
         {data?.pages?.map((boxes) =>
