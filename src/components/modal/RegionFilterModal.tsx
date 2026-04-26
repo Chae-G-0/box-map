@@ -18,7 +18,7 @@ export default function RegionFilterModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={closeModal}>
-      <DialogOverlay className="z-999" />
+      <DialogOverlay className="z-999 max-h-screen" />
       <DialogContent className={`${isPc && `max-h-[70vh] min-w-150`} z-9999`}>
         <DialogTitle>지역 필터</DialogTitle>
         <div
