@@ -13,16 +13,14 @@ export default function BoxListItem({ ...boxData }: Box) {
   return (
     <div className="border-b p-4">
       <div className="mb-2 flex justify-between">
-        <div>
-          <p
-            className="inline-block cursor-pointer text-[16px] font-bold"
-            onClick={() => {
-              setBoxState({ lat: boxData.lat, lng: boxData.lng });
-              closeBottomSheet();
-            }}
-          >
-            {boxData.name}
-          </p>
+        <div
+          className="flex-1 cursor-pointer"
+          onClick={() => {
+            setBoxState({ lat: boxData.lat, lng: boxData.lng });
+            closeBottomSheet();
+          }}
+        >
+          <p className="inline-block text-[16px] font-bold">{boxData.name}</p>
           <p className="text-[10px] break-keep">{boxData.address}</p>
         </div>
         <BookmarkButton id={boxData.id} isBookmark={boxData.isBookmark} />
